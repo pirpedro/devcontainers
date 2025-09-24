@@ -69,7 +69,7 @@ Templates are individually versioned by the `version` attribute in a Template's 
 
 ### Publishing
 
-> NOTE: The Distribution spec can be [found here](https://containers.dev/implementors/templates-distribution/).  
+> NOTE: The Distribution spec can be [found here](https://containers.dev/implementors/templates-distribution/).
 >
 > While any registry [implementing the OCI Distribution spec](https://github.com/opencontainers/distribution-spec) can be used, this template will leverage GHCR (GitHub Container Registry) as the backing registry.
 

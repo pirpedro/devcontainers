@@ -1,9 +1,6 @@
-// More info: https://containers.dev/implementors/json_reference/
 {
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  },
+  // no "name" and no "image" on purpose (template stays generic)
+
   "customizations": {
     "vscode": {
       "extensions": [
@@ -31,14 +28,29 @@
       ]
     }
   },
+
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "username": "vscode",
+      "installZsh": true,
+      "updateRemoteUserUID": false
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/pirpedro/features/antidote:1": {
+      "setAsDefaultShell": true
+    },
+    "ghcr.io/pirpedro/features/chezmoi:1": {},
+    "ghcr.io/pirpedro/features/dev-gadgets:1": {}
+  },
+
   "mounts": [
-    "source=${localEnv:SSH_AUTH_SOCK},target=/ssh-agent,type=bind",
-    "source=${localEnv:HOME}/.config/git/config,target=/home/node/.gitconfig,type=bind",
-    "source=${localEnv:HOME}/.ssh/known_hosts,target=/home/node/.ssh/known_hosts,type=bind"
+    "type=bind,source=${localEnv:SSH_AUTH_SOCK},target=/ssh-agent",
+    "type=bind,source=${localEnv:HOME}/.ssh/known_hosts,target=/home/vscode/.ssh/known_hosts"
   ],
+
   "remoteEnv": {
     "SSH_AUTH_SOCK": "/ssh-agent"
   },
-  "remoteUser": "node",
-  "postCreateCommand": "npm install -g @devcontainers/cli"
+
+  "remoteUser": "vscode"
 }
