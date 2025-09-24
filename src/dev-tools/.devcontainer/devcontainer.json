@@ -1,56 +1,55 @@
 {
-  // no "name" and no "image" on purpose (template stays generic)
+	"image": "mcr.microsoft.com/devcontainers/base:${templateOption:imageVariant}",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mads-hartmann.bash-ide-vscode",
+				"bierner.markdown-preview-github-styles",
+				"nefrob.vscode-just-syntax",
+				"eamodio.gitlens",
+				"mhutchie.git-graph",
+				"EditorConfig.EditorConfig",
+				"streetsidesoftware.code-spell-checker",
+				"streetsidesoftware.code-spell-checker-portuguese-brazilian",
+				"oderwat.indent-rainbow",
+				"shardulm94.trailing-spaces",
+				"alefragnani.Bookmarks",
+				"aaron-bond.better-comments",
+				"Gruntfuggly.todo-tree",
+				"yzhang.markdown-all-in-one",
+				"bierner.markdown-emoji",
+				"foxundermoon.shell-format",
+				"mikestead.dotenv",
+				"redhat.vscode-yaml",
+				"tamasfe.even-better-toml",
+				"humao.rest-client",
+				"ms-vscode-remote.remote-ssh"
+			]
+		}
+	},
 
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "mads-hartmann.bash-ide-vscode",
-        "bierner.markdown-preview-github-styles",
-        "nefrob.vscode-just-syntax",
-        "eamodio.gitlens",
-        "mhutchie.git-graph",
-        "EditorConfig.EditorConfig",
-        "streetsidesoftware.code-spell-checker",
-        "streetsidesoftware.code-spell-checker-portuguese-brazilian",
-        "oderwat.indent-rainbow",
-        "shardulm94.trailing-spaces",
-        "alefragnani.Bookmarks",
-        "aaron-bond.better-comments",
-        "Gruntfuggly.todo-tree",
-        "yzhang.markdown-all-in-one",
-        "bierner.markdown-emoji",
-        "foxundermoon.shell-format",
-        "mikestead.dotenv",
-        "redhat.vscode-yaml",
-        "tamasfe.even-better-toml",
-        "humao.rest-client",
-        "ms-vscode-remote.remote-ssh"
-      ]
-    }
-  },
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"username": "vscode",
+			"installZsh": true,
+			"updateRemoteUserUID": false
+		},
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/pirpedro/features/antidote:1": {
+			"setAsDefaultShell": true
+		},
+		"ghcr.io/pirpedro/features/chezmoi:1": {},
+		"ghcr.io/pirpedro/features/dev-gadgets:1": {}
+	},
 
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "username": "vscode",
-      "installZsh": true,
-      "updateRemoteUserUID": false
-    },
-    "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/pirpedro/features/antidote:1": {
-      "setAsDefaultShell": true
-    },
-    "ghcr.io/pirpedro/features/chezmoi:1": {},
-    "ghcr.io/pirpedro/features/dev-gadgets:1": {}
-  },
+	"mounts": [
+		"type=bind,source=${localEnv:SSH_AUTH_SOCK},target=/ssh-agent",
+		"type=bind,source=${localEnv:HOME}/.ssh/known_hosts,target=/home/vscode/.ssh/known_hosts"
+	],
 
-  "mounts": [
-    "type=bind,source=${localEnv:SSH_AUTH_SOCK},target=/ssh-agent",
-    "type=bind,source=${localEnv:HOME}/.ssh/known_hosts,target=/home/vscode/.ssh/known_hosts"
-  ],
+	"remoteEnv": {
+		"SSH_AUTH_SOCK": "/ssh-agent"
+	},
 
-  "remoteEnv": {
-    "SSH_AUTH_SOCK": "/ssh-agent"
-  },
-
-  "remoteUser": "vscode"
+	"remoteUser": "vscode"
 }

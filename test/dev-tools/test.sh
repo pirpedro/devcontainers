@@ -4,7 +4,7 @@ source test-utils.sh
 
 # Template specific tests
 check "distro" lsb_release -c
-check "chezmoi" [ $(chezmoi --version) ]
+check "chezmoi" $(chezmoi --version)
 
 # Report result
 reportResults

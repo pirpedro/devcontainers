@@ -1,8 +1,17 @@
 {
-  "id": "dev-tools",
-  "version": "1.0.0",
-  "name": "Dev Container Tools (base)",
-  "description": "Base template with common-utils, git, antidote, chezmoi and dev-gadgets features, SSH agent forwarding and Chezmoi workspace layout.",
-  "documentationURL": "https://github.com/pirpedro/devcontainers/tree/main/src/dev-tools",
-  "licenseURL": "https://github.com/pirpedro/devcontainers/blob/main/LICENSE"
+	"id": "dev-tools",
+	"version": "1.0.0",
+	"name": "Dev Container Tools (base)",
+	"description": "Base template with common-utils, git, antidote, chezmoi and dev-gadgets features, SSH agent forwarding and Chezmoi workspace layout.",
+	"documentationURL": "https://github.com/pirpedro/devcontainers/tree/main/src/dev-tools",
+	"licenseURL": "https://github.com/pirpedro/devcontainers/blob/main/LICENSE",
+	"options": {
+		"imageVariant": {
+			"type": "string",
+			"description": "Debian version (use bullseye on local arm64/Apple Silicon):",
+			"proposals": ["alpine", "debian", "ubuntu"],
+			"default": "ubuntu"
+		}
+	},
+	"platforms": ["Any"]
 }
